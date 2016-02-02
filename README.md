@@ -1,23 +1,43 @@
-Nz Makers
+\#MakerHood
 ================
+[makerhood.nz](http://www.makerhood.nz/)
+---
 
-[![Build Status](https://img.shields.io/travis/MakersNZ/MakersMap.svg)](https://travis-ci.org/MakersNZ/MakersMap)
-[![Code Climate](https://img.shields.io/codeclimate/github/MakersNZ/MakersMap.svg)](https://codeclimate.com/github/MakersNZ/MakersMap)
-[![Dependency Status](https://img.shields.io/gemnasium/MakersNZ/MakersMap.svg)](https://gemnasium.com/MakersNZ/MakersMap)
+#####We are the #makerhood, a community that creates its own destiny.
 
+An initiative designed and led by the South Auckland community, in New Zealand, to develop a generation of creative, entrepreneurial, engaged and full of purpose people.
 
-Generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem.
+Tapping into two already existing projects Oceania Career Academy and The Roots, #makerhood creates a platform for young South Aucklanders to leapfrog from unemployment and underpaid jobs to the most valuable skills in the world we are living in.
 
+The secret: Fusion
+Design + Trades
+Thinking + Doing
+Creativity + Practicality
+Minds + Hands
+Immediate + Futuristic
+Low tech + High tech
+
+Links to get some inspiration
+(maker and DIY tutorials)
+
+Instructables
+Thingiverse
+Makezine
+Maker Faire
+DIY Drones
+Brit.co
+iFixit
+Maori Future Makers
+Wikihouse
+Open Desk
+POC21
+BicycleTutor
+Permaculture Tutorials
+Poppy Projects
+Open Robot Hardware
 
 Getting Started
 ---------------
-This application requires:
-
-- Ruby 2.2.1
-- Rails 4.2.3
-- Postgres 9.4
-- ElasticSearch
-- Linux or MacOS
 
 ##### Mac OS Quickstart
 - install homebrew: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -51,32 +71,18 @@ This application requires:
 - Check it works in your browser [http://localhost:3000](http://localhost:3000)
 - Make changes, reload browser to see them happen
 
-#####Vagrant
-
-- Install Vagrant and Virtualbox, the steps would depend on your OS.
-- Install the vbguest plugin by running **vagrant plugin install vagrant-vbguest**
-- Start vagrant with **Vagrant up**
-- Login to VM: **Vagrant ssh**
-- Goto the app: **cd /vagrant/**
-- Install bundler: **gem install bundler"
-- bundle all the gems **bundle**
-- create new database: **rake db:create**
-- run database migrations: **rake db:migrate**
-- seed the starting data: **rake db:seed**
-- Start it: **rails server -b0.0.0.0**
-- Check if it works in your browser [http://localhost:3000](http://localhost:3000)
 
 Documentation and Support
 -------------------------
 
 To refresh the ElasticSearch Index, run `rake refresh_es`
 
-Issues
--------------
+Contact
+----
+- Oceania Academy: info@oca.nz
 
-Similar Projects
-----------------
-We are unique like a snowflake.
+- The Roots: info@theroots.org.nz
+
 
 Contributing
 ------------
@@ -84,6 +90,9 @@ Please fork the repo to your own github account, make a new branch for your feat
 
 Credits
 -------
+This project was designed in January 2016 in a Mesa&Cadeira for Auckland Council with the contributions of:
+
+Baruk Jacob, Barbara Soalheiro, Elizabeth Cretney, Gabriela Agustini, Gael Surgenot, Jaco van der Merwe, Joel Umali, John Belford-Lelaulu, John Kotoisuva, Joran Kikke, Livia Araujo, Lucas Tauil de Freitas, Rui Peng, Russell O’Brien, Sandra Chemin, Waikare Komene. Pictures and Video by: Simon WIlson.
 
 
 License
