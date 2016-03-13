@@ -24,4 +24,22 @@ class Tweet < ActiveRecord::Base
   def as_indexed_json(options={})
     as_json(include: { tags: { only: :name } } )
   end
+
+  # Work out the virality of this tweet
+  def calculate_hot_score
+    # sign of the score
+    s = 1 if votes_up > 0
+    s = 0 if votes_up == 0
+    s = -1 if votes_up < 0
+
+    # absolute value of the score
+    if s >= 1
+      x = s
+    else
+      x = 1
+    end
+
+    # seconds between submission time and midnight of the day makerhood started.
+    t = created_at - Time.new(2015, 1, 1, 12, 00, 0)
+  end
 end

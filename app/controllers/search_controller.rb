@@ -28,7 +28,17 @@ class SearchController < ApplicationController
       puts e
     end
 
-    @twitter_results = Elasticsearch::Model.search({ query: { "query_string": { query: @hashtags.split(" ").join(" AND ") } }, "sort": { "votes_up": { "order": "desc" }} }, [Tweet, Story]).page(params[:page]).records
+    @twitter_results = Elasticsearch::Model.search({
+      query:
+        {
+          query_string:
+          {
+            query: @hashtags.split(" ").join(" AND ")
+          }
+        },
+        sort: { hot_score: { order: "desc" }}
+      },
+      [Tweet, Story]).page(params[:page]).records
 
     @social_results = @twitter_results# + @video_results
 
