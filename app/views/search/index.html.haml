@@ -33,9 +33,9 @@
       %i.fa.fa-twitter.fa-2x
       Tweet
 
-    = link_to new_story_path(hashtags: @hashtags), class: "btn btn-success" do
-      %i.fa.fa-globe.fa-2x
-      Tell Story
+    -#= link_to new_story_path(hashtags: @hashtags), class: "btn btn-success" do
+    -#  %i.fa.fa-globe.fa-2x
+    -#  Tell Story
 
     -#
     -# - @tags.each do |tag|
@@ -44,6 +44,17 @@
 .row.wookmark-row
   .col-md-12
     .wookmarkable
+    
+      .square-box
+        .square-content
+          %div
+            = link_to new_story_path(hashtags: @hashtags), class: "btn story" do
+              %i.fa.fa-plus
+              %p Add a Story
+
+      
+      
+        
       - @social_results.each do |r|
         - if r.is_a?(Yt::Models::Video)
           = render partial: 'video_result', locals: { result: r }

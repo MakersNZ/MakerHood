@@ -40,8 +40,12 @@ body {
 	background-position: 50% 7em;*/
 	background-size: 33.34%;
 
-	font-family: "brandon-grotesque", helvetica !important;
+	font-family: 'Catamaran'
 }
+
+h1 {
+  font-family: "Catamaran";
+ }
 
 .tag_description {
 
@@ -106,13 +110,13 @@ h1 {
 		font-weight: bold;
 
 		&.color-tag {
-			border-radius: 0.2em;
-			padding: 0.1em 0.5em 0.2em 0.5em;
-			margin: 0.2em 0em;
-			margin-right: 0.2em;
-			line-height: 2;
+			border-radius: 0.07142857142857em;
+			padding: 0.07142857142857em 0.71428571428571em 0 0.71428571428571em;
+			margin: 0em 0.35714285714286em 0.35714285714286em 0em;
+			line-height: 2.07142857142857em;
 			background: #eeeeee;
 			color: #000 !important;
+			display: inline-block;
 
 			&:active,
 			&:focus,
@@ -121,6 +125,8 @@ h1 {
 				background: #000 !important;
 			}
 		}
+		
+		
 	}
 
 	a:active,
@@ -218,61 +224,65 @@ h1 {
 
   .panel-body
   {
-    width: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin: 6.25%;
+	
+	.panel-header {
+		position: relative;
+		height: 2em;
+		
+		.panel-overlay {
+			position: absolute;
+			top:0;
+			right:0;
+		}
+	}
 
-    .media-middle,
-    .media-left {
 
-      padding: 0;
-      margin: 0;
-      margin: 6.25%;
+	h4 {
+		font-size: 1.21428571428571em;
+		line-height: 1.47058823529412em;
+		font-weight: 500;
+		margin: 0.71428571428571em 0;
+		colour: #999999;
 
+  	a {
+     	&.btn {
+     		background: #ff94bb;
+     		font-size: 0.5em !important;
+     		padding: 12px 16px;
+     		padding: 6px 8px 1px 8px;
 
-			h3 {
-      	font-size: 1.14285714285714em;
-      	line-height: 1.4em;
-      	font-weight: 500;
-      	margin: 1.1em 0;
+     		&:hover {
+     				background: #00000 !important;
+     			}
 
-      	a {
- 	     	&.btn {
- 	     		background: #ff94bb;
- 	     		font-size: 0.5em !important;
- 	     		padding: 12px 16px;
- 	     		padding: 6px 8px 1px 8px;
-
- 	     		&:hover {
- 	     				background: #00000 !important;
- 	     			}
-
- 	     		&.disabled {
- 	     			background: #cccccc;
- 	     			font-size: 0.5em !important;
- 	     			padding: 12px 16px;
- 	     			padding: 6px 8px 1px 8px;
- 	     		}
- 	     	}
- 	     	&:hover {
- 	     		background: #00000 !important;
- 	     	}
-
-      	}
-      }
+     		&.disabled {
+     			background: #cccccc;
+     			font-size: 0.5em !important;
+     			padding: 12px 16px;
+     			padding: 6px 8px 1px 8px;
+     		}
+     	}
+     	&:hover {
+     		background: #00000 !important;
+     	}
+  	}
      .hashtags {
 
      	clear:both;
-     	margin-top: 1em;
-     	font-size: 1.14285714285714em;
+     	margin-top: 1.47058823529412em;
+     	font-size: 1.21428571428571em;
+     	line-height: 1.76470588235294em;
 
      .hashtag {
 
-     	line-height: 1.4em;
+     	line-height: 1.47058823529412em;
      	font-weight: 700;
      	background: #EEE;
      	display: inline-block;
-     	border-radius: 4px;
-     	padding: 1px 4px;
-     	margin: 2px 2px 2px 0;
 
      	a {
      		color: #000;
@@ -312,11 +322,11 @@ h1 {
 
      media {
 
-       clear: both;
-
        iframe {
          max-width: 100% !important;
        }
+       
+
 
      }
 
@@ -339,6 +349,10 @@ h1 {
     iframe {
       max-width: 100% !important;
     }
+    
+    &.media-tag {
+    			margin: 0em 0.35714285714286em 0.35714285714286em 0em;
+    		}
 
   }
 
@@ -369,3 +383,106 @@ h1 {
   color: #337ab7;
   font-size: 1.5em;
 }
+
+
+
+a {
+     	&.btn {
+     		background: #cccccc;
+     		text-transform: none;
+     		font-weight: 700;
+
+     		&:hover {
+     				background: #00000 !important;
+     			}
+
+     		&.disabled {
+     			background: #cccccc;
+     			font-size: 0.5em !important;
+     			padding: 12px 16px;
+     			padding: 6px 8px 1px 8px;
+     		}
+     		
+     		&.vote {
+     				font-size: 1.42857142857143em;
+     				padding: 0.5em;
+     				background: none;
+     				color: #cccccc;
+     				
+     				&.btn-success {
+     					color: #ff94bb;
+     				}
+     				
+     				&:hover {
+     					color: #ff94bb;
+     				}
+     				
+     			}
+     			
+     		&.story {
+     					background: #dddddd;
+     					color: #ffffff;
+     					font-size: 1.21428571428571em;
+     					
+     					i.fa {
+     						font-size: 7.14285714285714em;
+     					}
+     					p {
+     					}
+     					
+     					&.btn-success {
+     						color: #ff94bb;
+     					}
+     					
+     					&:hover {
+     						background: #000000;
+     					}
+     					
+     				}
+     			
+     	}
+     	&:hover {
+     		background: #00000 !important;
+     	}
+  	}
+  	
+  	.square-box{
+  	    position: relative;
+  	    width: 50%;
+  	    overflow: hidden;
+  	    
+  	    &:before{
+  	    	    content: "";
+  	    	    display: block;
+  	    	    padding-top: 100%;
+  	    }
+  	    
+  	    	.square-content{
+  	    	    position:  absolute;
+  	    	    top: 0;
+  	    	    left: 0;
+  	    	    bottom: 0;
+  	    	    right: 0;
+  	    	    padding:15px;
+  	    	    
+  	    	    div {
+  	    	    	   display: table;
+  	    	    	   width: 100%;
+  	    	    	   height: 100%;
+  	    	    }
+  	    	    
+  	    	    span {
+  	    	    	    display: table-cell;
+  	    	    	    text-align: center;
+  	    	    	    vertical-align: middle;
+  	    	    }
+  	    	    a {
+  	    	      	    display: table-cell;
+  	    	      	    text-align: center;
+  	    	      	    vertical-align: middle;
+  	    	      }
+  	    	}
+  	    
+  	}
+ 
+
