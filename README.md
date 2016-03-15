@@ -56,14 +56,16 @@ Getting Started
 - install rvm [https://rvm.io/rvm/install#quick-guided-install](https://rvm.io/rvm/install#quick-guided-install)
 - install ruby with rvm `rvm install ruby-2.2.1`
 - connect your git with github (skip if done) [https://help.github.com/articles/set-up-git/](https://help.github.com/articles/set-up-git/)
-- checkout project somewhere: `git clone git@github.com:MakersNZ/MakersMap.git`
-- move to project directory: `cd MakersMap`
+- checkout project somewhere: `git clone git@github.com:MakersNZ/MakerHood.git`
+- move to project directory: `cd MakerHood`
 - install bundler `gem install bundler`
 - bundle all the gems `bundle`
 - install npm
 - install bower `npm install bower`
 - install js dependencies with bower `rake bower:install`
 - configure database connection inside: config/database.yml
+- setup environment variables inside: config/application.yml
+  ``
 - create new database: `rake db:create`
 - run database migrations `rake db:migrate`
 - seed starting data `rake db:seed`
