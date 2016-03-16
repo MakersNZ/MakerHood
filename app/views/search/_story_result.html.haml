@@ -1,6 +1,5 @@
 .panel.panel-default
   .panel-body.search-result-body
-
     .media-left.media-middle
       %media
         = markdown(result.safe_data.story).html_safe
@@ -13,13 +12,13 @@
       -#           %iframe{ src: "https://www.youtube.com/embed/#{url['expanded_url'].split("/").last }", frameborder: "0" }
       -#
       -#
-      -# %h4
-      -#   = auto_link(result.safe_data.text).html_safe
-      -# %media
-      -#   = image_tag result.safe_data.user["profile_image_url"]
-      -#   = result.safe_data.user["name"]
-      -#
-      -# %p.hashtags
-      -#   - result.safe_data.entities["hashtags"].each do |hashtag|
-      -#     - next if hashtag == "makerhood"
-      -#     = link_to "##{hashtag['text']}", root_url(tags: "##{hashtag['text']}"), class: "hashtag"
+      
+      -#%h4
+      -#  = auto_link(result.safe_data.text).html_safe
+        
+      %p.panel-meta.hashtags.clearfix
+        %media.media-tag
+          -#= image_tag result.safe_data.user["profile_image_url"], :title => result.safe_data.user["name"], height: '30', width: '30'
+        - result.tags.each do |tag|
+          - next if tag.name == "makerhood"
+          = render partial: 'tags/row', locals: {tag: tag}

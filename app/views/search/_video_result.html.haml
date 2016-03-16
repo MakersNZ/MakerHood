@@ -1,12 +1,21 @@
 .panel.panel-default
   .panel-body.search-result-body
     .media-left.media-middle
-      %h4
-        = link_to "http://youtube.com/watch?v=#{result.id}" do
-          = result.title
 
       %media
         %iframe{ width: "560", height: "315", src: "https://www.youtube.com/embed/#{result.id}", frameborder: "0" }
         = image_tag result.snippet.data["thumbnails"]["high"]["url"]
         .fb-like{ "data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "standard", "data-action" => "like",
           "data-show-faces" => "true", "data-share" => "false"}
+          
+      %h4
+        = link_to "http://youtube.com/watch?v=#{result.id}" do
+          = result.title
+          
+      %p.panel-meta.hashtags.clearfix
+        -#%media.media-tag
+          = image_tag result.safe_data.user["profile_image_url"], :title => result.safe_data.user["name"], height: '30', width: '30'
+        - result.tags.each do |tag|
+          - next if tag.name == "makerhood"
+          = render partial: 'tags/row', locals: {tag: tag}
+
