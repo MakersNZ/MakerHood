@@ -115,6 +115,8 @@ GEM
     geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google-webfonts-rails (0.0.4)
+      activesupport (> 3.2.0, < 5.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -362,6 +364,7 @@ DEPENDENCIES
   font-awesome-rails!
   foreman!
   geocoder!
+  google-webfonts-rails!
   guard-bundler!
   guard-rspec!
   haml-rails!
