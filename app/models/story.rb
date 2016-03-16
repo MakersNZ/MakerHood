@@ -3,13 +3,6 @@ class Story < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  include SocialAsset
 
-  def safe_data
-    OpenStruct.new(data)
-  end
-
-  # Called by the elasticsearch indexer and should add the tag names
-  def as_indexed_json(options={})
-    as_json(include: { tags: { only: :name } } )
-  end
 end
