@@ -7,7 +7,7 @@ source 'https://rubygems.org' do
 
   # Assets
   gem "bower-rails", "~> 0.10.0"
-
+  gem 'google-webfonts-rails'
 
   # Pagination
   gem 'kaminari', '0.14.1'
