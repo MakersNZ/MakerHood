@@ -1,6 +1,6 @@
 - css_class = "" unless local_assigns[:css_class]
 
 = link_to root_url(tags: "##{tag.name}"), class:"color-tag #{css_class}", style: "background: #{tag.color}; color: #{tag.color};" do
-  - if tag.icon.present?
-    %i{class: "fa #{tag.icon}"}
+  -#- if tag.icon.present?
+  -#  %i{class: "fa #{tag.icon}"}
   = "##{tag.name}"

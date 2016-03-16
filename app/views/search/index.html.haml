@@ -1,21 +1,81 @@
 = content_for :banner do
   - unless (params.has_key?(:tags) || params.has_key?(:page))
-    .container-full
-      = image_tag "makerhood_new.jpg", class: "banner-image"
-      %h1.tag-line
-        We are the #makerhood,
-        %br
-        a community that creates its own destiny.
+    .container-fluid
+      .row
+        .col.12
+          = image_tag "makerhood_new.jpg", class: "banner-image"
+        .col-sm-offset-1.col-sm-10.text-center.pad-80
+          
+          %h1.text-center
+            %b
+              We are the #makerhood, 
+              %br
+              transforming South Auckland. 
+              %br
+              Tag to join us here.
+              
+          %ul.tag-line-icons.text-center
+            %li
+              %h1
+                %i.fa.fa-twitter
+              %p.icon-caption
+                Twitter
+            %li
+              %h1
+                %i.fa.fa-youtube-play
+              %p.icon-caption
+                Youtube
+            %li.disabled-color
+              %h1.disabled-color
+                %i.fa.fa-instagram
+              %p.icon-caption
+                Coming...
+              -#%div
+                -#%i.fa.fa-instagram    
+      
+      
+    .container     
+      .row.pad-40
+        .col-sm-offset-1.col-sm-10.text-center
+          %ul.tag-line-icons.text-center
+            %li
+              %h2
+                = link_to "", class:"color-tag disabled", style: "margin:0; background:#00ccff" do
+                  %b
+                    = "#makerhood"
+            %li
+              %h2.disabled-color
+                %i.fa.fa-plus
+            %li
+              %h2
+                = link_to "", class:"color-tag disabled", style: "margin:0; background:#ccc" do
+                  %b
+                    = "#yourtag"
+ 
+  
 
-%h1.color-tag
   - @active_tags.each do |t|
     - next if t.name == "makerhood"
-    = render partial: "tags/row", locals: { tag: t}
-
-- @active_tags.each do |t|
-  - if t.description.present?
-    .tag_description
-      = markdown(t.description).html_safe
+    -#= render partial: "tags/row", locals: { tag: t}
+    .container-fluid
+      .row{ class: "color-row", style: "background: #{t.color};"}
+        .col-12.text-center
+        
+          %span.text-right.clearfix
+            = link_to root_url, :class => "btn close" do
+              %i.fa.fa-times.fa-3x
+      
+          %h1.text-center.clearfix
+            %b
+              = "##{t.name}"
+              %br
+        
+        .col-sm-offset-1.col-sm-10.text-center
+          - @active_tags.each do |t|
+            - if t.description.present?
+              %h2.tag-description.text-center
+                = markdown(t.description).html_safe
+      
 
   -# - t.places.each do |p|
   -#   .row
@@ -24,13 +84,59 @@
   -#     .col-md-4
   -#       #map_container
 
+
+- if (params.has_key?(:tags))
+  %h2.sub-heading.text-center
+    %br
+    %b.disabled-color
+      = "Posts"
+
+
 .row.wookmark-row
+  .col-md-12.wookmarkable
+    .panel
+      .panel-body
+        - if (params.has_key?(:tags))
+          - @active_tags.each do |t|
+            - next if t.name == "makerhood"
+            .square-box
+              .square-content
+                %div{ class: "color-box", style: "background: #{t.color};"}
+                  = link_to new_story_path(hashtags: @hashtags), class: "btn story", style: "background: #{t.color};" do
+                    %i.fa.fa-plus
+                    %p Add a Story
+        - else
+          .square-box
+            .square-content
+              %div 
+                = link_to new_story_path(hashtags: @hashtags), class: "btn story" do
+                  %i.fa.fa-plus
+                  %p Add a Story
+      
+    - @social_results.each do |r|
+      - if r.is_a?(Yt::Models::Video)
+        = render partial: 'video_result', locals: { result: r }
+      - elsif r.class.name == "Story"
+        = render partial: 'story_result', locals: { result: r }
+      - elsif r.class.name == "Tweet"
+        = render partial: 'twitter_result', locals: { result: r}
+  = paginate @social_results
+    
+    
+    
+.row.pad-40
   .col-md-12
+
+    %h2.sub-heading.text-center
+      %b.disabled-color
+        = "Tags"
+  
+  
     - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
       = render partial: "tags/row", locals: { tag: tag, css_class: css_class }
 
     = link_to "https://twitter.com/intent/tweet?hashtags=#{@hashtags.gsub("#", '').gsub(" ", ',')}", class: "btn btn-success" do
-      %i.fa.fa-twitter.fa-2x
+      %i.fa.fa-twitter
       Tweet
 
     -#= link_to new_story_path(hashtags: @hashtags), class: "btn btn-success" do
@@ -41,25 +147,3 @@
     -# - @tags.each do |tag|
     -#   %span{ style: "font-size: #{tag.font_size}em;"}
 
-.row.wookmark-row
-  .col-md-12
-    .wookmarkable
-    
-      .square-box
-        .square-content
-          %div
-            = link_to new_story_path(hashtags: @hashtags), class: "btn story" do
-              %i.fa.fa-plus
-              %p Add a Story
-
-      
-      
-        
-      - @social_results.each do |r|
-        - if r.is_a?(Yt::Models::Video)
-          = render partial: 'video_result', locals: { result: r }
-        - elsif r.class.name == "Story"
-          = render partial: 'story_result', locals: { result: r }
-        - elsif r.class.name == "Tweet"
-          = render partial: 'twitter_result', locals: { result: r}
-    = paginate @social_results
