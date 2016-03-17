@@ -16,7 +16,7 @@
       -#%h4
       -#  = auto_link(result.safe_data.text).html_safe
       .panel-media-overlay.text-center
-        = link_to vote_up_path(result.id, type: "story" ), :remote => true, class: "btn vote vote-image", data: { id: result.id} do
+        = link_to vote_up_path(result.id, type: "story" ), :remote => true, class: "btn vote vote-embed", data: { id: result.id} do
           %i.fa.fa-heart
       %p.panel-meta.hashtags.clearfix
         %media.media-tag

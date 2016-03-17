@@ -26,9 +26,6 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
 
-    # puts @story
-    # puts story_params
-
     params["hashtags"].gsub("#", "").split(" ").each do |tag|
       t = Tag.where('lower(name) = ?', tag.downcase).first
 
@@ -37,7 +34,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to root_url(tags: params[:hashtags]), notice: 'Story TOLD.' }
+        format.html { redirect_to root_url(tags: params[:hashtags].gsub("#", "").gsub("+", ""), newest: true), notice: 'Story TOLD.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }

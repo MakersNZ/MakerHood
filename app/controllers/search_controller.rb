@@ -3,7 +3,6 @@ class SearchController < ApplicationController
   RESULT_SET = 300
 
   def index
-
     @hashtags = params[:tags]
     @hashtags = "" if @hashtags.nil?
 
@@ -28,6 +27,9 @@ class SearchController < ApplicationController
       puts e
     end
 
+    sort = { hot_score: { order: "desc" }}
+    sort = { created_at: { order: "desc" }} if params['newest']
+
     @twitter_results = Elasticsearch::Model.search({
       query:
         {
@@ -36,7 +38,7 @@ class SearchController < ApplicationController
             query: @hashtags.split(" ").join(" AND ")
           }
         },
-        sort: { hot_score: { order: "desc" }}
+        sort: sort
       },
       [Tweet, Story, Instagram]).page(params[:page]).records
 

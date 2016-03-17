@@ -82,6 +82,15 @@
 
 
 .row.wookmark-row
+  .col-md-12
+    %ul.nav.nav-pills
+      %li{ class: params[:newest] ? "" : "active" }
+        = link_to root_path do
+          %h5 Popular
+      %li{ class: params[:newest] ? "active" : "" }
+        = link_to root_path(newest: true) do
+          %h5 Newest
+
   .col-md-12.wookmarkable
     .panel
       .panel-body
