@@ -53,14 +53,17 @@ MakerMap.setup = () ->
     editor = new Editor()
     editor.render()
 
-  
+
   $('.wookmarkable').imagesLoaded(
     $('.wookmarkable').wookmark(options)
   )
-  
+
   return
 
 
 # Fire setup event whenever the page loads
 $(document).ready( MakerMap.setup )
 $(document).on('page:load', MakerMap.setup )
+
+$(window).load ->
+  $('.wookmarkable').wookmark(options)
