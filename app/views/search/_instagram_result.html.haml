@@ -6,7 +6,7 @@
           = image_tag result.data["table"]["images"]["standard_resolution"]["url"], class: "img-responsive"
 
         .panel-media-overlay.text-center
-          = link_to vote_up_path(result.id), :remote => true, class: "btn vote vote-image", data: { id: result.id } do
+          = link_to vote_up_path(result.id, type: "instagram"), :remote => true, class: "btn vote vote-image", data: { id: result.id } do
             %i.fa.fa-heart
     %h4
       = auto_link(result.data["table"]["caption"]["text"]).html_safe

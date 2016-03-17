@@ -12,10 +12,12 @@
       -#           %iframe{ src: "https://www.youtube.com/embed/#{url['expanded_url'].split("/").last }", frameborder: "0" }
       -#
       -#
-      
+
       -#%h4
       -#  = auto_link(result.safe_data.text).html_safe
-        
+      .panel-media-overlay.text-center
+        = link_to vote_up_path(result.id, type: "story" ), :remote => true, class: "btn vote vote-image", data: { id: result.id} do
+          %i.fa.fa-heart
       %p.panel-meta.hashtags.clearfix
         %media.media-tag
           -#= image_tag result.safe_data.user["profile_image_url"], :title => result.safe_data.user["name"], height: '30', width: '30'

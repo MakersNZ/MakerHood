@@ -1,30 +1,30 @@
 .panel.panel-default
   .panel-body
-    
+
     - if result.safe_data.entities
-      
+
       .panel-media
         - type = 'default'
-      
+
         - result.safe_data.entities.each do |media|
           - media[1].each do |url|
             - if url['media_url']
               - type = 'image'
               .panel-image
                 = image_tag url['media_url'], class: "img-responsive"
-                    
-                    
+
+
             - if url['expanded_url'] && url['expanded_url'].include?("youtu")
               - type = 'embed'
               .panel-embed
                 .embed-responsive.embed-responsive-4by3
                   %iframe.embed-responsive-item{ src: "https://www.youtube.com/embed/#{url['expanded_url'].split("/").last }", frameborder: "0", width: "100%", height: "400px" }
 
-       
+
         .panel-media-overlay.text-center
-          = link_to vote_up_path(result.id), :remote => true, class: "btn vote vote-#{type}", data: { id: result.id } do
-            %i.fa.fa-heart  
-    
+          = link_to vote_up_path(result.id, type: "tweet"), :remote => true, class: "btn vote vote-#{type}", data: { id: result.id  } do
+            %i.fa.fa-heart
+
     %h4
       = auto_link(result.safe_data.text).html_safe
 
