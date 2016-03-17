@@ -38,7 +38,7 @@ class SearchController < ApplicationController
         },
         sort: { hot_score: { order: "desc" }}
       },
-      [Tweet, Story]).page(params[:page]).records
+      [Tweet, Story, Instagram]).page(params[:page]).records
 
     @social_results = @twitter_results# + @video_results
 

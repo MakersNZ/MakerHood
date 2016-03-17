@@ -21,12 +21,14 @@ source 'https://rubygems.org' do
   gem 'yt', '~> 0.25.5'
   # gem "socialization"
   gem 'twitter'
+
+  gem 'rest-client'
+
   gem 'rails_autolink'
   gem "font-awesome-rails"
 
   gem 'sidekiq'
   gem 'sidekiq-unique-jobs'
-  gem 'newrelic_rpm'
 
   # AR Extensions
   gem 'activerecord-postgres-earthdistance'
@@ -49,7 +51,6 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.0'
 
-  gem 'sidekiq'
   gem 'newrelic_rpm'
 
   gem 'dalli'

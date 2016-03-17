@@ -5,36 +5,34 @@
         .col.12
           = image_tag "makerhood_new.jpg", class: "banner-image"
         .col-sm-offset-1.col-sm-10.text-center.pad-80
-          
+
           %h1.text-center
             %b
-              We are the #makerhood, 
+              We are the #makerhood,
               %br
-              transforming South Auckland. 
+              transforming South Auckland.
               %br
               Tag to join us here.
-              
+
           %ul.tag-line-icons.text-center
             %li
               %h1
                 %i.fa.fa-twitter
               %p.icon-caption
                 Twitter
+            -# %li
+            -#   %h1
+            -#     %i.fa.fa-youtube-play
+            -#   %p.icon-caption
+            -#     Youtube
             %li
               %h1
-                %i.fa.fa-youtube-play
-              %p.icon-caption
-                Youtube
-            %li.disabled-color
-              %h1.disabled-color
                 %i.fa.fa-instagram
               %p.icon-caption
-                Coming...
-              -#%div
-                -#%i.fa.fa-instagram    
-      
-      
-    .container     
+                Instagram
+
+
+    .container
       .row.pad-40
         .col-sm-offset-1.col-sm-10.text-center
           %ul.tag-line-icons.text-center
@@ -51,8 +49,8 @@
                 = link_to "", class:"color-tag disabled", style: "margin:0; background:#ccc" do
                   %b
                     = "#yourtag"
- 
-  
+
+
 
   - @active_tags.each do |t|
     - next if t.name == "makerhood"
@@ -60,30 +58,21 @@
     .container-fluid
       .row{ class: "color-row", style: "background: #{t.color};"}
         .col-12.text-center
-        
+
           %span.text-right.clearfix
             = link_to root_url, :class => "btn close" do
               %i.fa.fa-times.fa-3x
-      
+
           %h1.text-center.clearfix
             %b
               = "##{t.name}"
               %br
-        
+
         .col-sm-offset-1.col-sm-10.text-center
           - @active_tags.each do |t|
             - if t.description.present?
               %h2.tag-description.text-center
                 = markdown(t.description).html_safe
-      
-
-  -# - t.places.each do |p|
-  -#   .row
-  -#     .col-md-8
-  -#       = render partial: "maker_thing/show", locals: { maker_thing: p }
-  -#     .col-md-4
-  -#       #map_container
-
 
 - if (params.has_key?(:tags))
   %h2.sub-heading.text-center
@@ -108,11 +97,11 @@
         - else
           .square-box
             .square-content
-              %div 
+              %div
                 = link_to new_story_path(hashtags: @hashtags), class: "btn story" do
                   %i.fa.fa-plus
                   %p Add a Story
-      
+
     - @social_results.each do |r|
       - if r.is_a?(Yt::Models::Video)
         = render partial: 'video_result', locals: { result: r }
@@ -120,18 +109,20 @@
         = render partial: 'story_result', locals: { result: r }
       - elsif r.class.name == "Tweet"
         = render partial: 'twitter_result', locals: { result: r}
+      - elsif r.class.name == "Instagram"
+        = render partial: 'instagram_result', locals: { result: r}
   = paginate @social_results
-    
-    
-    
+
+
+
 .row.pad-40
   .col-md-12
 
     %h2.sub-heading.text-center
       %b.disabled-color
         = "Tags"
-  
-  
+
+
     - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
       = render partial: "tags/row", locals: { tag: tag, css_class: css_class }
 
@@ -146,4 +137,3 @@
     -#
     -# - @tags.each do |tag|
     -#   %span{ style: "font-size: #{tag.font_size}em;"}
-

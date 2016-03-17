@@ -1,0 +1,20 @@
+.panel.panel-default
+  .panel-body
+    .panel-media
+      .panel-image
+        = link_to result.data["table"]["link"] do
+          = image_tag result.data["table"]["images"]["standard_resolution"]["url"], class: "img-responsive"
+
+        .panel-media-overlay.text-center
+          = link_to vote_up_path(result.id), :remote => true, class: "btn vote vote-image", data: { id: result.id } do
+            %i.fa.fa-heart
+    %h4
+      = auto_link(result.data["table"]["caption"]["text"]).html_safe
+
+    %p.panel-meta.hashtags.clearfix
+      %media.media-tag
+        = image_tag result.data["table"]["user"]["profile_picture"], :title => result.data["table"]["user"]["username"], height: '30', width: '30'
+      - result.tags.each do |tag|
+        - next if tag.name == "makerhood"
+        = render partial: 'tags/row', locals: {tag: tag}
+  .clearfix

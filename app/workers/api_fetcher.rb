@@ -8,12 +8,26 @@ class ApiFetcher
   end
 
 
-
-  private
-
-
   def do_instagram query
+    response = RestClient.get("https://api.instagram.com/v1/tags/makerhood/media/recent.json", params: { access_token: ENV['instagram_access_token'] })
+    results = JSON.parse(response)["data"]
 
+    puts "Instagrams: #{results.length}"
+
+    results.each do |r|
+      print 'I'
+      puts r.inspect
+      r = OpenStruct.new(r)
+
+      i = Instagram.find_or_initialize_by(instagram_id: r.id)
+      i.data = r.to_json
+
+      r.tags.each do |hashtag|
+        i.tag_list.add(hashtag)
+      end
+
+      i.save!
+    end
   end
 
   def do_twitter query
