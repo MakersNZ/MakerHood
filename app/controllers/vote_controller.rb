@@ -15,5 +15,7 @@ class VoteController < ApplicationController
       s.vote!(request.ip)
       @tweet = s
     end
+
+    render 'vote_up', formats: :js
   end
 end
