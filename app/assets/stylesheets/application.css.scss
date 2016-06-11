@@ -24,7 +24,6 @@
 body {
 	background-image: url(image-path('pattern_new.png'));
 	background-size: 33.34%;
-	/*background-color: #FCFADD;*/
 	font-family: 'Catamaran'
 }
 
@@ -33,9 +32,23 @@ div.CodeMirror.cm-s-paper
   background: white;
 }
 
-.container-full {
-  /*margin: 0 auto;
-  width: 100%;*/
+.banner-overlay
+{
+  top: 50%;
+  transform: translateY(-60%);
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.58);
+  color: white;
+  width: 66%;
+}
+
+.container-full
+{
   padding: 0;
 }
 
@@ -45,6 +58,7 @@ div.CodeMirror.cm-s-paper
 
 .banner-image {
 	width: 100%;
+  min-height: 100%;
 }
 
 .css1 { font-size: 1.0em; }

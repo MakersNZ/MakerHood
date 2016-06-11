@@ -1,9 +1,12 @@
 = content_for :banner do
   - unless (params.has_key?(:tags) || params.has_key?(:page))
-    .container-fluid
+    %header.container-fluid
       .row
         .col.12
           = image_tag "banner_2.jpg", class: "banner-image"
+
+
+      .banner-overlay.clearfix
         .col-sm-offset-1.col-sm-10.text-center.pad-80
 
           %h1.text-center
@@ -32,7 +35,6 @@
                 Instagram
 
 
-    .container
       .row.pad-40
         .col-sm-offset-1.col-sm-10.text-center
           %ul.tag-line-icons.text-center
@@ -81,6 +83,32 @@
       = "Posts"
 
 
+
+
+.row.pad-40
+  .col-md-12
+
+    %h2.sub-heading.text-center
+      %b.disabled-color
+        = "Tags"
+
+
+    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = render partial: "tags/row", locals: { tag: tag, css_class: css_class }
+
+    = link_to "https://twitter.com/intent/tweet?hashtags=#{@hashtags.gsub("#", '').gsub(" ", ',')}", class: "btn btn-success" do
+      %i.fa.fa-twitter
+      Tweet
+
+    -#= link_to new_story_path(hashtags: @hashtags), class: "btn btn-success" do
+    -#  %i.fa.fa-globe.fa-2x
+    -#  Tell Story
+
+    -#
+    -# - @tags.each do |tag|
+    -#   %span{ style: "font-size: #{tag.font_size}em;"}
+
+
 .row.wookmark-row
   .col-md-12
     %ul.nav.nav-pills
@@ -121,28 +149,3 @@
       - elsif r.class.name == "Instagram"
         = render partial: 'instagram_result', locals: { result: r}
   = paginate @social_results
-
-
-
-.row.pad-40
-  .col-md-12
-
-    %h2.sub-heading.text-center
-      %b.disabled-color
-        = "Tags"
-
-
-    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-      = render partial: "tags/row", locals: { tag: tag, css_class: css_class }
-
-    = link_to "https://twitter.com/intent/tweet?hashtags=#{@hashtags.gsub("#", '').gsub(" ", ',')}", class: "btn btn-success" do
-      %i.fa.fa-twitter
-      Tweet
-
-    -#= link_to new_story_path(hashtags: @hashtags), class: "btn btn-success" do
-    -#  %i.fa.fa-globe.fa-2x
-    -#  Tell Story
-
-    -#
-    -# - @tags.each do |tag|
-    -#   %span{ style: "font-size: #{tag.font_size}em;"}
